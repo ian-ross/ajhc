@@ -64,3 +64,5 @@ Exposed-Modules:
         - Data.Version
         - Control.Monad.Instances
         - Text.Printf
+        - Data.Fixed
+
