@@ -61,6 +61,8 @@ instance Show IntMax where
 
 instance Show CSize where
     showsPrec p x = showsPrec p (fromIntegral x :: Integer)
+instance Show CTime where
+    showsPrec p x = showsPrec p (fromIntegral x :: Integer)
 instance Show CInt where
     showsPrec p x = showsPrec p (fromIntegral x :: Integer)
 instance Show CLong where
