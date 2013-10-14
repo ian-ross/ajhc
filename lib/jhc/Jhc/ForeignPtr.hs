@@ -1,3 +1,4 @@
+{-# OPTIONS_JHC -fm4 #-}
 module Jhc.ForeignPtr(
     ForeignPtr(),
     newPlainForeignPtr_,
@@ -14,7 +15,10 @@ import Jhc.IO
 import Jhc.Prim.Prim
 import Jhc.Prim.Rts
 import Jhc.Type.Basic
+import Jhc.Order
 import Jhc.Basics
+
+m4_include(Jhc/Order.m4)
 
 type FinalizerPtr  a = FunPtr (Ptr a -> IO ())
 
@@ -22,6 +26,8 @@ type FinalizerPtr  a = FunPtr (Ptr a -> IO ())
 -- location. The actual ForeignPtr heap location may contain more than the
 -- single BitsPtr_ argument.
 data ForeignPtr a = FP BitsPtr_
+
+INST_EQORDER((ForeignPtr a),FP,BitsPtr_,U)
 
 -- | This function creates a plain ForeignPtr from a Ptr, a plain foreignptr
 -- may not have finalizers associated with it, hence this function may be pure.
