@@ -43,12 +43,12 @@ instance  (Ix a, Ix b)  => Ix (a,b) where
         index   ((l,l'),(u,u')) (i,i') =  index (l,u) i * rangeSize (l',u') + index (l',u') i'
         inRange ((l,l'),(u,u')) (i,i') = inRange (l,u) i && inRange (l',u') i'
 
---instance  Ix Integer  where
---    range (m,n)		= [m..n]
---    index b@(m,n) i
---        | inRange b i   =  fromInteger (i - m)
---        | otherwise     =  error "Ix.index: Index out of range."
---    inRange (m,n) i     =  m <= i && i <= n
+instance  Ix Integer  where
+    range (m,n)		= [m..n]
+    index b@(m,n) i
+        | inRange b i   =  fromInteger (i - m)
+        | otherwise     =  error "Ix.index: Index out of range."
+    inRange (m,n) i     =  m <= i && i <= n
 
 instance  Ix Bool  where
     range (m,n)		= [m..n]
